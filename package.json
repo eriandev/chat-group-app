@@ -1,0 +1,51 @@
+{
+  "name": "chat-group-app",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "sirv public",
+    "dev": "run-p scss:watch rollup:watch",
+    "build": "run-s scss:build css:build rollup:build",
+    "validate": "svelte-check",
+    "lint": "run-s format validate",
+    "rollup:watch": "rollup -c -w",
+    "rollup:build": "rollup -c",
+    "format": "prettier --write ./src/**/*.{js,ts,json,svelte,scss}",
+    "scss:watch": "sass src/main.scss public/global.css --watch --no-stop-on-error",
+    "scss:build": "sass src/main.scss public/global.css",
+    "css:build": "cross-env NODE_ENV=production postcss public/global.css -o public/global.css"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "dependencies": {
+    "sirv-cli": "^1.0.10"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-node-resolve": "^11.0.1",
+    "@rollup/plugin-typescript": "^8.1.0",
+    "@tsconfig/svelte": "^1.0.10",
+    "cross-env": "^7.0.3",
+    "cssnano": "^4.1.10",
+    "husky": "^4.3.6",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.2.1",
+    "postcss-cli": "^8.3.1",
+    "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.2.1",
+    "prettier-plugin-svelte": "^1.4.2",
+    "rollup": "^2.35.1",
+    "rollup-plugin-css-only": "^3.0.0",
+    "rollup-plugin-livereload": "^2.0.0",
+    "rollup-plugin-svelte": "^7.0.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "sass": "^1.30.0",
+    "svelte": "^3.31.0",
+    "svelte-check": "^1.1.22",
+    "svelte-preprocess": "^4.6.1",
+    "tslib": "^2.0.3",
+    "typescript": "^4.1.3"
+  }
+}
